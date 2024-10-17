@@ -59,3 +59,4 @@ end
 
 gem 'rails_live_reload', '~> 0.3.6'
 gem 'tailwindcss-rails'
+gem 'htmlbeautifier'

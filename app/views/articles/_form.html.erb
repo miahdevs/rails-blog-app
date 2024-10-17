@@ -1,26 +1,29 @@
-<%= form_with model: @article do |form| %>
+<%= form_with model: @article, class: "w-full text-left" do |form| %>
   <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.label :title, "Title:" %><br>
+    <%= form.text_field :title, class: "w-full border border-gray-300 rounded-md p-1 mt-2 text-black" %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
+  <div class="mt-4">
+    <%= form.label :body, "Body:" %><br>
+    <%= form.text_area :body, class: "w-full border border-gray-300 rounded-md p-1 mt-2 text-black" %><br>
     <% @article.errors.full_messages_for(:body).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, Visible::VALID_STATUSES, selected: article.status || 'public' %>
+  <div class="mt-4">
+    <%= form.label :status, "Status:" %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, 
+        { selected: @article.status || 'public' }, 
+        { class: "border border-gray-300 rounded-md p-2 mt-2 text-black" } 
+    %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mt-4">
+    <%= form.submit "Submit", class: "bg-white text-blue-500 font-bold py-1 px-4 rounded-md shadow-md" %>
   </div>
 <% end %>

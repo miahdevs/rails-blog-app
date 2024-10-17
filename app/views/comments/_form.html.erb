@@ -1,17 +1,20 @@
-<%= form_with model: [ article, article.comments.build ] do |form| %>
+<%= form_with model: [ article, article.comments.build ], class: "w-full text-left" do |form| %>
   <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
+    <%= form.label :commenter, "Commenter:" %><br>
+    <%= form.text_field :commenter, class: "w-full border border-gray-300 rounded-md p-2" %>
   </p>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+  <p class="mt-4">
+    <%= form.label :body, "Body:" %><br>
+    <%= form.text_area :body, class: "w-full border border-gray-300 rounded-md p-1 mt-2 text-black" %>
   </p>
-  <p>
-    <%= form.label :status %><br>
-    <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+  <p class="mt-4">
+    <%= form.label :status, "Status:" %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, 
+      { selected: 'public' }, 
+      { class: "border border-gray-300 rounded-md p-1 mt-2 text-black" } 
+    %>
   </p>
-  <p>
-    <%= form.submit %>
+  <p class="mt-4">
+    <%= form.submit "Submit", class: "bg-white text-blue-500 font-bold py-1 px-4 rounded-md shadow-md" %>
   </p>
 <% end %>

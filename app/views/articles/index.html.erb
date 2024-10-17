@@ -1,17 +1,16 @@
-<div class="bg-blue-500 text-white p-4 rounded-lg shadow-md">
-<h1>Articles</h1>
-</div>
+<h2 class="text-2xl font-bold text-white mb-8 text-center">Our blog has <%= Article.public_count %> articles and counting!</h2>
 
-Our blog has <%= Article.public_count %> articles and counting!
-
-<ul>
+<div class="grid grid-cols-2 gap-6">
   <% @articles.each do |article| %>
     <% unless article.archived? %>
-      <li>
-        <%= link_to article.title, article_path(article) %>
-      </li>
+      <div class="p-4 bg-white rounded-md shadow-lg">
+        <h2 class="text-lg font-bold">
+          <%= link_to article.title, article_path(article) %>
+        </h2>
+        <p class="text-sm italic text-gray-500"><%= article.created_at.strftime("%B %d, %Y") %></p>
+        <p class="mt-2"><%= article.body.truncate_words(50) %></p>
+        <p class="text-sm text-right mt-2 text-blue-500"><%= link_to "Read More >", article_path(article) %></p>
+      </div>
     <% end %>
   <% end %>
-</ul>
-
-<%= link_to "New Article", new_article_path %>
+</div>
