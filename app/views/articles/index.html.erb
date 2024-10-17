@@ -1,6 +1,6 @@
 <h2 class="text-2xl font-bold text-white mb-8 text-center">Our blog has <%= Article.public_count %> articles and counting!</h2>
 
-<div class="grid grid-cols-2 gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
   <% @articles.each do |article| %>
     <% unless article.archived? %>
       <div class="p-4 bg-white rounded-md shadow-lg">
