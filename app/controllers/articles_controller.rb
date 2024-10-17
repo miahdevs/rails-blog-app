@@ -15,6 +15,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.slug = @article.title.parameterize
     if @article.save
       redirect_to @article
     else
@@ -26,8 +27,10 @@ class ArticlesController < ApplicationController
     set_article
   end
 
-  def update
+  def update  
     set_article
+    @article.assign_attributes(article_params)
+    @article.slug = @article.title.parameterize if @article.title_changed?
 
     if @article.update(article_params)
       redirect_to @article
@@ -45,10 +48,10 @@ class ArticlesController < ApplicationController
 
   private
     def article_params
-      params.require(:article).permit(:title, :body, :status)
+      params.require(:article).permit(:title, :body, :status, :slug)
     end
 
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.find_by!(slug: params[:slug])
     end
 end

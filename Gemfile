@@ -48,6 +48,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "foreman"
 end
 
 group :test do
@@ -57,3 +58,4 @@ group :test do
 end
 
 gem 'rails_live_reload', '~> 0.3.6'
+gem 'tailwindcss-rails'
