@@ -1,11 +1,13 @@
 <div class="max-w-screen-md w-full mx-auto mt-10 text-white text-center">
-  <div class="flex justify-end mb-10 gap-4">
-    <button class="text-blue-500 bg-white py-1 px-2 rounded-md shadow-md"><%= link_to "Edit", edit_article_path(@article.slug) %></button>
-    <button class="text-red-500 bg-white py-1 px-2 rounded-md shadow-md"><%= link_to "Delete", article_path(@article.slug), data: {
-                  turbo_method: :delete,
-                  turbo_confirm: "Are you sure?"
-                } %></button>
-  </div>
+  <% if user_signed_in? %>
+    <div class="flex justify-end mb-10 gap-4">
+      <button class="text-blue-500 bg-white py-1 px-2 rounded-md shadow-md"><%= link_to "Edit", edit_article_path(@article.slug) %></button>
+      <button class="text-red-500 bg-white py-1 px-2 rounded-md shadow-md"><%= link_to "Delete", article_path(@article.slug), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></button>
+    </div>
+  <% end %>
   <p class="text-sm text-gray-400"><%= @article.created_at.strftime("%B %d, %Y") %></p>
   <h1 class="text-4xl font-bold mt-4 mb-8"><%= @article.title.titleize %></h1>
   <p><%= @article.body %></p>
