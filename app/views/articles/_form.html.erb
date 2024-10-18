@@ -1,22 +1,22 @@
 <%= form_with model: @article, class: "w-full text-left" do |form| %>
   <div>
-    <%= form.label :title, "Title:" %><br>
+    <%= form.label :title, "Title:" %>
     <%= form.text_field :title, class: "w-full border border-gray-300 rounded-md p-1 mt-2 text-black" %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-red-500"><%= message %></div>
     <% end %>
   </div>
 
   <div class="mt-4">
-    <%= form.label :body, "Body:" %><br>
-    <%= form.text_area :body, class: "w-full border border-gray-300 rounded-md p-1 mt-2 text-black" %><br>
+    <%= form.label :body, "Body:" %>
+    <%= form.text_area :body, class: "w-full border border-gray-300 rounded-md p-1 mt-2 text-black" %>
     <% @article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
+      <div class="text-red-500"><%= message %></div>
     <% end %>
   </div>
 
   <div class="mt-4">
-    <%= form.label :status, "Status:" %><br>
+    <%= form.label :status, "Status:" %>
     <%= form.select :status, Visible::VALID_STATUSES, 
         { selected: @article.status || 'public' }, 
         { class: "border border-gray-300 rounded-md p-2 mt-2 text-black" } 

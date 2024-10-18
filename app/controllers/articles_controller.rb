@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "user", password: "password", except: [:index, :show]
+  # http_basic_authenticate_with name: "user", password: "password", except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.slug = @article.title.parameterize
     if @article.save
-      redirect_to @article
+      redirect_to @article, notice: "Article was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
     @article.slug = @article.title.parameterize if @article.title_changed?
 
     if @article.update(article_params)
-      redirect_to @article
+      redirect_to @article, notice: "Article was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class ArticlesController < ApplicationController
     set_article
     @article.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to root_path, status: :see_other, notice: "Article was successfully deleted."
   end
 
   private

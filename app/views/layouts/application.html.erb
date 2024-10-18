@@ -19,10 +19,13 @@
   </head>
 
   <body class="bg-cyan-950">
-    <%= render "layouts/header" %>
-    <div class="flex flex-col max-w-screen-md mx-auto mt-10 pb-20 px-10 lg:px-4">
+    <div class="flex flex-col min-h-screen">
+      <%= render "layouts/flash" %>
+      <%= render "layouts/header" %>
+      <div class="flex flex-col max-w-screen-md w-full h-auto mx-auto pt-10 pb-20 px-10 lg:px-4">
       <%= yield %>
     </div>
-    <%= render "layouts/footer" %>
+    </div>
+      <%= render "layouts/footer" %>
   </body>
 </html>
