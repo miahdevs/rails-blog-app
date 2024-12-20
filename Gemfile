@@ -57,7 +57,7 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'rails_live_reload', '~> 0.3.6'
+gem 'rails_live_reload', '~> 0.4.0'
 gem 'tailwindcss-rails'
 gem 'htmlbeautifier'
 gem 'devise', '~> 4.9', '>= 4.9.3'
